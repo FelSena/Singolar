@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import API from "../API";
+import EditForm from "../editForm";
 import PostCard from "../PostCard";
 import { ModalContext } from "../Providers/ModalProvider";
 
@@ -18,13 +19,17 @@ const PostDetails = () => {
     );
   }, [modalItem]);
 
+  const handleDelete = () => {
+    API.delete(`posts/${modalItem.id}`)
+      .then((res) => console.log(res))
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <div>
         {editForm ? (
-          <form>
-            <input type="text" />
-          </form>
+          <EditForm setEditForm={setEditForm} />
         ) : (
           <div>
             <span>
@@ -43,8 +48,14 @@ const PostDetails = () => {
           </div>
         )}
       </div>
-      <button>Deletar</button>
-      <button>Editar</button>
+      <button onClick={handleDelete}>Deletar</button>
+      <button
+        onClick={() => {
+          setEditForm(true);
+        }}
+      >
+        Editar
+      </button>
     </div>
   );
 };

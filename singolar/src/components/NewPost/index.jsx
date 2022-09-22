@@ -5,9 +5,10 @@ const NewPost = () => {
   const { register, handleSubmit } = useForm();
   const createPost = (data) => {
     const newData = { userId: 1, ...data };
-    API.post("", newData)
+    API.post("posts", newData)
       .then((res) => console.log(res))
       .catch((err) => console.error(err));
+    //FALTA TRABALHAR O POP-UP SUCESS
   };
   return (
     <form onSubmit={handleSubmit(createPost)}>

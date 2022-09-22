@@ -7,7 +7,7 @@ const PostCard = ({ post }) => {
     <div>
       <h2>{post.title}</h2>
       <span>{post.body}</span>
-      <button onClick={handleOpen}>Ver mais</button>
+      <button onClick={() => handleOpen(post)}>Ver mais</button>
     </div>
   );
 };

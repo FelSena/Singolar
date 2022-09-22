@@ -7,7 +7,7 @@ const PostList = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    API.get().then((res) => {
+    API.get("posts").then((res) => {
       setData(res.data);
       setIsMounted(true);
     });

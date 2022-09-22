@@ -5,18 +5,20 @@ export const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
   const [modal, setModal] = useState(false);
   const [modalCreate, setModalCreate] = useState(false);
-  const handleOpen = (create) => {
+  const [modalItem, setModalItem] = useState(null);
+  const handleOpen = (props) => {
     setModal(true);
-    create === true && setModalCreate(true);
+    props === true ? setModalCreate(true) : setModalItem(props);
   };
   const handleClose = () => {
     setModal(false);
     setModalCreate(false);
+    setModalItem(null);
   };
 
   return (
     <ModalContext.Provider
-      value={{ modal, handleOpen, handleClose, modalCreate }}
+      value={{ modal, handleOpen, handleClose, modalCreate, modalItem }}
     >
       {children}
     </ModalContext.Provider>

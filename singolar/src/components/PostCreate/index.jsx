@@ -1,15 +1,13 @@
 import { useContext } from "react";
 import { ModalContext } from "../Providers/ModalProvider";
 
-const PostCard = ({ post }) => {
+const PostCreate = () => {
   const { handleOpen } = useContext(ModalContext);
   return (
     <div>
-      <h2>{post.title}</h2>
-      <span>{post.body}</span>
-      <button onClick={handleOpen}>Ver mais</button>
+      <button onClick={() => handleOpen(true)}>Criar um Post</button>
     </div>
   );
 };
 
-export default PostCard;
+export default PostCreate;

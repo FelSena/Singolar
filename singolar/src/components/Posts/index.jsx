@@ -14,7 +14,7 @@ const PostList = () => {
   }, []);
   return (
     <div className="App">
-      {isMounted && data.map((post) => <PostCard post={post} />)}
+      {isMounted && data.map((post) => <PostCard key={post.id} post={post} />)}
     </div>
   );
 };

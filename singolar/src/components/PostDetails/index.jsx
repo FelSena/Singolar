@@ -9,6 +9,7 @@ const PostDetails = () => {
   const { modalItem } = useContext(ModalContext);
   const [comments, setComments] = useState([]);
   const [userPosts, setUserPosts] = useState([]);
+  const [confirmation, setConfirmation] = useState(false);
 
   useEffect(() => {
     API.get(`posts/${modalItem.id}/comments`).then((res) =>
@@ -48,7 +49,7 @@ const PostDetails = () => {
           </div>
         )}
       </div>
-      <button onClick={handleDelete}>Deletar</button>
+      <button onClick={() => setConfirmation(true)}>Deletar</button>
       <button
         onClick={() => {
           setEditForm(true);
@@ -56,6 +57,13 @@ const PostDetails = () => {
       >
         Editar
       </button>
+      {confirmation && (
+        <div>
+          <span>Tem certeza?</span>
+          <button onClick={handleDelete}>Sim</button>
+          <button onClick={() => setConfirmation(false)}>Nao</button>
+        </div>
+      )}
     </div>
   );
 };

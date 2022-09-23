@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import API from "../../API";
 import { Avatar, CustomLink } from "../../PostDetails/style";
 import { ModalContext } from "../../Providers/ModalProvider";
-import { Column, ThemeButton, ThemeH2 } from "../../Styles/Globals";
+import { Column, ThemeButton, ThemeH2, ThemeSpan } from "../../Styles/Globals";
 import avatar from "../../../assets/userAvatar.png";
 import { AlbumBox, MainDiv, PhotoBox, PhotoColumn } from "./style";
 import { ModalBg, ModalBox } from "../../MainModal/style";
@@ -67,7 +67,15 @@ const User = () => {
           <ModalBox>
             <PhotoColumn>
               {photos.map((photo) => (
-                <PhotoBox w="500px" sw="250px" src={photo.url}></PhotoBox>
+                <>
+                  <PhotoBox
+                    w="500px"
+                    sw="250px"
+                    src={photo.url}
+                    key={photo.id}
+                  />
+                  <ThemeSpan>{photo.title.slice(0, 30)}</ThemeSpan>
+                </>
               ))}
             </PhotoColumn>
             <ThemeButton bgColor="#0096fa" onClick={() => setModal(false)}>

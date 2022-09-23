@@ -59,6 +59,9 @@ export const Column = styled.div`
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
   box-sizing: border-box;
+  @media (max-width: 767px) {
+    height: ${(props) => props.sh};
+  } ;
 `;
 
 export const Row = styled.div`

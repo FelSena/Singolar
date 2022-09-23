@@ -23,6 +23,8 @@ export const ModalBox = styled.div`
   border-radius: 8px;
   box-shadow: 2px 3px 2px 0px rgba(0, 0, 0, 0.3);
   gap: 50px;
+  padding: 15px 0;
+  box-sizing: border-box;
 
   @media (max-width: 767px) {
     width: 90%;

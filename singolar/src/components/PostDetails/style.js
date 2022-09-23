@@ -17,7 +17,7 @@ export const DetailsBox = styled.div`
 export const CustomLink = styled(Link)`
   text-decoration: none;
   color: #0096fa;
-  background-color: #f1f5e9;
+  background-color: transparent;
   font-size: 15px;
   font-weight: 400;
   line-height: 18px;
@@ -40,5 +40,4 @@ export const CommentBox = styled.div`
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 2px 3px 2px 0px rgba(0, 0, 0, 0.3);
-  
 `;

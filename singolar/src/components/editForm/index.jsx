@@ -1,32 +1,57 @@
+import { Box, TextField } from "@mui/material";
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import API from "../API";
 import { ModalContext } from "../Providers/ModalProvider";
+import { Column, ThemeButton } from "../Styles/Globals";
+import { toast } from "react-toastify";
+
 const EditForm = ({ setEditForm }) => {
   const { register, handleSubmit } = useForm();
-  const { modalItem } = useContext(ModalContext);
-  const createPost = (data) => {
+  const { modalItem, handleClose } = useContext(ModalContext);
+  const editPost = (data) => {
     API.patch(`posts/${modalItem.id}`, data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        res.status === 200 && toast.success("Post Editado!");
+        handleClose();
+      })
       .catch((err) => console.error(err));
-    //FALTA TRABALHAR O POP-UP SUCESS
   };
   return (
-    <>
-      <form onSubmit={handleSubmit(createPost)}>
-        <input {...register("title")} defaultValue={modalItem.title} required />
-        <input {...register("body")} defaultValue={modalItem.body} required />
+    <Column gap="20px">
+      <Box
+        component="form"
+        onSubmit={handleSubmit(editPost)}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          alignItems: "center",
+        }}
+      >
+        <TextField
+          {...register("title")}
+          defaultValue={modalItem.title}
+          label="Título"
+          required
+        />
+        <TextField
+          {...register("body")}
+          label="Conteúdo"
+          defaultValue={modalItem.body}
+          required
+        />
 
-        <button type="submit">Editar!</button>
-      </form>
-      <button
+        <ThemeButton type="submit">Editar!</ThemeButton>
+      </Box>
+      <ThemeButton
         onClick={() => {
           setEditForm(false);
         }}
       >
         Voltar
-      </button>
-    </>
+      </ThemeButton>
+    </Column>
   );
 };
 

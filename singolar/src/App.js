@@ -3,6 +3,7 @@ import MainModal from "./components/MainModal";
 import { ModalProvider } from "./components/Providers/ModalProvider";
 import MainRoutes from "./components/Routes";
 import "react-toastify/dist/ReactToastify.css";
+import "App.css";
 
 function App() {
   return (
